@@ -2,14 +2,14 @@ package iespablopicasso.es;
 
 import java.util.Scanner;
 
-public class peliculas {
+public class Peliculas {
 
 	private String titulo;
 	private String year;
 	private String calidad;
 	private String formato;
 	
-	public peliculas(String titulo, String year, String calidad, String formato) {
+	public Peliculas(String titulo, String year, String calidad, String formato) {
 		super();
 		this.titulo = titulo;
 		this.year = year;
@@ -17,12 +17,21 @@ public class peliculas {
 		this.formato = formato;
 	}
 	
-	public peliculas(String pelicula, String directorio) {
+	public Peliculas(String pelicula, String directorio) {
 		
-		this.titulo = pelicula.substring(0, pelicula.indexOf("("));
-		this.year = pelicula.substring(pelicula.indexOf("(")+1, pelicula.indexOf(")"));
 		this.calidad = directorio;
 		this.formato =  pelicula.substring(pelicula.indexOf(".")+1, pelicula.length());
+		
+		if(pelicula.contains("(")) {
+			this.titulo = pelicula.substring(0, pelicula.indexOf("("));
+			this.year = pelicula.substring(pelicula.indexOf("(")+1, pelicula.indexOf(")"));
+			
+		}else {
+			this.titulo = pelicula.substring(0, pelicula.lastIndexOf(" "));
+			this.year =  " ";
+		}
+		
+		
 	}
 	
 	public String serializar() {
@@ -63,8 +72,8 @@ public class peliculas {
 	public void setFormato(String formato) {
 		this.formato = formato;
 	}
-	
-	
+
+			
 	
 	
 }

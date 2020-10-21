@@ -32,17 +32,12 @@ public class Fichero {
 
 		File[] files = file.listFiles();
 		File[] peliculas;
-		// System.out.println(peliculas[1].getName());
-
-		StringBuilder sb = new StringBuilder();
-
-		System.out.println(files.length);
-
+		
 		for (int i = 0; i < files.length; i++) {
 			peliculas = files[i].listFiles();
 			for (int j = 0; j <= peliculas.length - 1; j++) {
-				String peliculilla = peliculas[j].getName();
-				peliculas pelicula = new peliculas(peliculilla, files[i].getName());
+				String nombrePelicula = peliculas[j].getName();
+				Peliculas pelicula = new Peliculas(nombrePelicula, files[i].getName());
 				// System.out.println(pelicula.serializar());
 				coleccionPeliculas.add(pelicula.serializar());
 			}
@@ -80,6 +75,9 @@ public class Fichero {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			System.out.println("Fichero creado");
+			
 		} else {
 			System.out.println("el fichero ya existe");
 		}
